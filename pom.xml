@@ -57,6 +57,19 @@
 	</dependencyManagement>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -82,9 +95,9 @@
 						<phase>package</phase>
 					</execution>
 				</executions>
-
 				<configuration>
 					<dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+
 					<!-- that's the default value, you don't have to set it -->
 					<prefix>git</prefix>
 					<verbose>false</verbose>
@@ -96,17 +109,7 @@
 						<always>false</always>
 						<dirty>-dirty</dirty>
 					</gitDescribe>
-					<!--<validationProperties>
-						&lt;!&ndash; verify that the current repository is not dirty &ndash;&gt;
-						<validationProperty>
-							<name>validating git dirty</name>
-							<value>${git.dirty}</value>
-							<shouldMatchTo>false</shouldMatchTo>
-						</validationProperty>
-					</validationProperties>-->
-
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>
